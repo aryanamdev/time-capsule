@@ -38,13 +38,11 @@ export default function SignUpPage() {
             const data = await response.data
 
             if(!data?.success){
-                throw new Error(data?.error || "Error creating user")
+                throw new Error(data?.message || "Error creating user")
             }
 
-            setTimeout(() => {
-                toast.success("Successfully created user")
-                router.push("/login")
-            }, 3000)
+            toast.success(data?.message)
+            router.push("/login")
 
         } catch (error: any) {
             toast.error(error.message)

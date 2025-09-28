@@ -6,6 +6,7 @@ export const ROUTES = {
         LOGIN: `${base}/login`,
         SIGNUP: `${base}/signup`,
         VIEWER: `${base}/viewer`,
-        LOGOUT: `${base}/logout`
+        LOGOUT: `${base}/logout`,
+        VERIFY_EMAIL: `${base}/verifyEmail`,
     }
 } as const

@@ -4,7 +4,6 @@ const userSchema: Schema = new mongoose.Schema({
     fullName: {
         type: "String",
         required: [true, "Username is required"],
-        unique: true,
         trim: true,
     },
     email: {
@@ -25,10 +24,18 @@ const userSchema: Schema = new mongoose.Schema({
     role: {
         type: "String",
     },
-    forgotPasswordToken: "String",
-    forgotPasswordTokenExpiryDate: "String",
-    verifyToken: "String",
-    verifyTokenExpiryDate: "String",
+    forgotPasswordToken: {
+        type: "String",
+    },
+    forgotPasswordTokenExpiryDate: {
+        type: "Date",
+    },
+    verifyToken: {
+        type: "String",
+    },
+    verifyTokenExpiryDate: {
+        type: "Date",
+    },
 
 })
 

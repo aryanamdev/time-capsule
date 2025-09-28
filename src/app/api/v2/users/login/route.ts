@@ -3,6 +3,7 @@ import User from "@/models/userModel";
 import bcrypt from "bcryptjs";
 import { NextRequest, NextResponse } from "next/server";
 import jwt from "jsonwebtoken"
+
 // connection
 connect()
 
@@ -12,10 +13,7 @@ export async function POST(request: NextRequest) {
 
         const { email, password } = requestBody
 
-        console.log({ requestBody })
-
         const user = await User.findOne({ email })
-
 
         if (!user) {
             return NextResponse.json({
@@ -32,7 +30,14 @@ export async function POST(request: NextRequest) {
             })
         }
 
-        // Creating token 
+        const isUserVerified = user.isVerified
+
+        if (!isUserVerified) {
+            return NextResponse.json({
+                message: "Please verify your email to login",
+                success: false,
+            })
+        }
 
         const tokenData = {
             id: user._id,

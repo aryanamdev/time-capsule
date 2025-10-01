@@ -11,20 +11,13 @@ const VerifyEmail = () => {
     const router = useRouter()
 
     const token = searchParams.get("token")
-
-    if(!token){
-        return <>Invalid token</>
-    }
-
-    console.log({token})
-
     const verifyEmail = async () => {
         try {
             const response = await axios.post(ROUTES.USER.VERIFY_EMAIL, { token })
 
             const data = await response.data
 
-            if(!data?.success){
+            if (!data?.success) {
                 throw new Error(data?.message || "Error verifying email")
             }
 
@@ -34,13 +27,21 @@ const VerifyEmail = () => {
         } catch (error) {
             toast.error("Error verifying email")
             console.error("Error verifying email", error)
-        }}
+        }
+    }
 
     useEffect(() => {
         verifyEmail()
-
-        return () => {}
     }, [])
+
+    if (!token) {
+        return <>Invalid token</>
+    }
+
+    console.log({ token })
+
+
+
 
 
     return <>Verify Email</>

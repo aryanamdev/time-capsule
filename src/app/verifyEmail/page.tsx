@@ -1,5 +1,5 @@
 "use client"
-import { useEffect } from "react"
+import { Suspense, useEffect } from "react"
 import { ROUTES } from "../constants/routes"
 import { useSearchParams } from "next/navigation"
 import axios from "axios"
@@ -38,14 +38,12 @@ const VerifyEmail = () => {
         return <>Invalid token</>
     }
 
-    console.log({ token })
-
-
-
-
-
     return <>Verify Email</>
 }
 
+const VerifyPage = () => {
+    return <Suspense><VerifyEmail /></Suspense>
+}
 
-export default VerifyEmail
+
+export default VerifyPage

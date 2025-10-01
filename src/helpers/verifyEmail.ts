@@ -1,9 +1,8 @@
 import nodemailer from "nodemailer"
 import User from "@/models/userModel"
 import bcrypt from "bcryptjs"
-import { IdCardLanyard } from "lucide-react"
 import { MailOptions } from "nodemailer/lib/sendmail-transport"
-import { NextResponse } from "next/server"
+
 
 const ONE_DAY = 24 * 60 * 60 * 1000
 export interface SendEmailProps {
